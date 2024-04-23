@@ -87,11 +87,11 @@ const updateLike = async (req, res) => {
         const findPost = await DataModel.findOne({_id: postID})
         if(findPost.likes.includes(req.user._id)){
             const update = await DataModel.findOneAndUpdate({_id: postID}, { $pull: {likes: req.user._id}}, {new: true})
-            res.status(200).json(update.likes)
+            res.status(200).json(update)
         }
         if(!findPost.likes.includes(req.user._id)){
             const update = await DataModel.findOneAndUpdate({_id: postID}, { $push: {likes: req.user._id}}, {new: true})
-            res.status(200).json(update.likes)
+            res.status(200).json(update)
         }
 
     }catch(error){

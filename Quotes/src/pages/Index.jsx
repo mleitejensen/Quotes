@@ -8,36 +8,13 @@ import { useAuthContext } from "../hooks/useAuthContext"
 
 const Index = () => {
     const { getRandomPost, post, isLoading, error } = useRandomPost()
-    const { like, likeIsLoading, likeError } = useLike()
+    const { like, res, likeIsLoading, likeError } = useLike()
     const { user } = useAuthContext()
-    const [updatedPost, setUpdatedPost] = useState()
-
-    const baseURL = process.env.PROXY
 
     useEffect(() => {
         getRandomPost()
     }, [])
-
-    // const sendToLogin = () => {
-    //     return(
-    //         <Navigate to="/"/>
-    //     )
-    // }
-
-
-    const getUpdatedPostData = async (id) => {
-        try{
-            const response = await fetch(`${baseURL}/post/${id}`)
-            const res = await response.json()
-            if(response.ok){
-                setUpdatedPost(res)
-            }
-
-        }catch(error){
-            console.log(error)
-        }
-    }
-
+   
     const getTimeAgo = (timestamp) => {
         const previousDate = new Date(timestamp)
         const currentDate = new Date()
@@ -68,8 +45,13 @@ const Index = () => {
                 {post?.likes?.includes(user?._id) && 
                 <>
                     <div className="likes">
-                        <img className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id); getUpdatedPostData(post?._id)}} src={Liked}></img> 
-                        <p>{post?.likes.length}</p>
+                        <img className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Liked}></img> 
+                        {res &&
+                            <p>{res?.likes.length}</p>
+                        }
+                        {!res && 
+                            <p>{post?.likes.length}</p>
+                        }
                     </div>
                     <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
                     <p>{post?.origin}</p>
@@ -79,14 +61,19 @@ const Index = () => {
                 <>
                     <div className="likes">
                         {user && 
-                            <img className="like" disabled={likeIsLoading} onClick={() => {like(post?._id); getUpdatedPostData(post?._id)}} src={Like}></img>
+                            <img className="like" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Like}></img>
                         }
                         {!user && 
                             <Link to="/sign-up">
                                 <img className="like" src={Like}></img>
                             </Link>
                         }
-                        <p>{post?.likes.length}</p>
+                        {res &&
+                            <p>{res?.likes.length}</p>
+                        }
+                        {!res && 
+                            <p>{post?.likes.length}</p>
+                        }
                     </div>
                     <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
                     <p>{post?.origin}</p>

@@ -6,6 +6,7 @@ const baseURL = process.env.PROXY
 export const useLike = () => {
     const [likeError, setError] = useState(null)
     const [likeIsLoading, setIsLoading] = useState(null)
+    const [res, setRes] = useState(null)
     const {user} = useAuthContext()
 
     const like = async (postID) => {
@@ -27,9 +28,10 @@ export const useLike = () => {
             setError(json.error)
         }
         if(response.ok){
+            setRes(json)
             setIsLoading(false)
         }
     }
 
-    return { like, likeIsLoading, likeError }
+    return { like, res, likeIsLoading, likeError }
 }
