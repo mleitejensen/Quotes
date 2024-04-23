@@ -19,10 +19,15 @@ const Index = () => {
 
 
     const getUpdatedPostData = async (id) => {
-        const response = await fetch(`${baseURL}/post/${id}`)
-        const res = await response.json()
-        if(response.ok){
-            setUpdatedPost(res)
+        try{
+            const response = await fetch(`${baseURL}/post/${id}`)
+            const res = await response.json()
+            if(response.ok){
+                setUpdatedPost(res)
+            }
+
+        }catch(error){
+            console.log(error)
         }
     }
 

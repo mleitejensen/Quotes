@@ -54,10 +54,6 @@ const Home = () => {
         await post(origin, body, user.username)
     }
 
-    const deleteButton = (_id) => {
-        deletePost(_id)
-    }
-
     const getTimeAgo = (timestamp) => {
         const previousDate = new Date(timestamp)
         const currentDate = new Date()
@@ -112,18 +108,17 @@ const Home = () => {
                 <div className="box">
                     {user && 
                     <>
-                        {post?.likes.includes(user._id) && 
+
                         <div className="likes">
-                            <img className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Liked}></img> 
-                            <p>{post?.likes.length}</p>
-                        </div>
-                        }
                         {!post?.likes.includes(user._id) && 
-                        <div className="likes">
                             <img className="like" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Like}></img>
+                        }
+                        {post?.likes.includes(user._id) && 
+                            <img className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Liked}></img> 
+                        }
+
                             <p>{post?.likes.length}</p>
                         </div>
-                        }
                     </>
                     }
                     {!user &&
@@ -142,9 +137,9 @@ const Home = () => {
             <div className="error">{userPostError}</div>
         }
 
-        {userPostIsLoading && 
+        { /*userPostIsLoading && 
             <div className="loading">Loading...</div>
-        }
+        */}
         </>
     )
 }
