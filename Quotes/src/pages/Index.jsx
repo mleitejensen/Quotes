@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from 'react-router-dom'
 import { useRandomPost } from "../hooks/useRandomPost"
 import Like from "../assets/like.svg"
 import Liked from "../assets/liked.svg"
@@ -16,6 +17,12 @@ const Index = () => {
     useEffect(() => {
         getRandomPost()
     }, [])
+
+    // const sendToLogin = () => {
+    //     return(
+    //         <Navigate to="/"/>
+    //     )
+    // }
 
 
     const getUpdatedPostData = async (id) => {
@@ -57,66 +64,35 @@ const Index = () => {
         <div className="randomPost">
             <h3 className="quote">"{post?.body}"</h3>
             <div className="box">
-                {updatedPost &&
                 <>
-                    {updatedPost?.likes.includes(user._id) && 
-                    <>
-                        <div className="likes">
-                            <img className="unlike" disabled={likeIsLoading} onClick={() => {like(updatedPost?._id); getUpdatedPostData(updatedPost?._id)}} src={Liked}></img> 
-                            <p>{updatedPost?.likes.length}</p>
-                        </div>
-                        <p>Posted by: {updatedPost?.username} {getTimeAgo(updatedPost?.createdAt)}</p>
-                        <p>{updatedPost?.origin}</p>
-                    </>
-                    }
-                    {!updatedPost?.likes.includes(user._id) && 
-                    <>
-                        <div className="likes">
-                            <img className="like" disabled={likeIsLoading} onClick={() => {like(updatedPost?._id); getUpdatedPostData(updatedPost?._id)}} src={Like}></img>
-                            <p>{updatedPost?.likes.length}</p>
-                        </div>
-                        <p>Posted by: {updatedPost?.username} {getTimeAgo(updatedPost?.createdAt)}</p>
-                        <p>{updatedPost?.origin}</p>
-                    </>
-                    }
+                {post?.likes?.includes(user?._id) && 
+                <>
+                    <div className="likes">
+                        <img className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id); getUpdatedPostData(post?._id)}} src={Liked}></img> 
+                        <p>{post?.likes.length}</p>
+                    </div>
+                    <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
+                    <p>{post?.origin}</p>
                 </>
                 }
-                {!updatedPost &&
+                {!post?.likes?.includes(user?._id) && 
                 <>
-                    {user && 
-                    <>
-                        {post?.likes?.includes(user._id) && 
-                        <>
-                            <div className="likes">
-                                <img className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id); getUpdatedPostData(post?._id)}} src={Liked}></img> 
-                                <p>{post?.likes.length}</p>
-                            </div>
-                            <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
-                            <p>{post?.origin}</p>
-                        </>
+                    <div className="likes">
+                        {user && 
+                            <img className="like" disabled={likeIsLoading} onClick={() => {like(post?._id); getUpdatedPostData(post?._id)}} src={Like}></img>
                         }
-                        {!post?.likes?.includes(user._id) && 
-                        <>
-                            <div className="likes">
-                                <img className="like" disabled={likeIsLoading} onClick={() => {like(post?._id); getUpdatedPostData(post?._id)}} src={Like}></img>
-                                <p>{post?.likes.length}</p>
-                            </div>
-                            <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
-                            <p>{post?.origin}</p>
-                        </>
+                        {!user && 
+                            <Link to="/sign-up">
+                                <img className="like" src={Like}></img>
+                            </Link>
                         }
-                    </>
-                    }
-                    {!user &&
-                    <>
-                        <p>Likes: {post?.likes.length}</p>
-                        <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
-                        <p>{post?.origin}</p>
-                    </>
-                    }
+                        <p>{post?.likes.length}</p>
+                    </div>
+                    <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
+                    <p>{post?.origin}</p>
                 </>
                 }
-                
+                </>
             </div>
         </div>
 
