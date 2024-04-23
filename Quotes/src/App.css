@@ -168,6 +168,10 @@ img{
   max-width: 80%;
 }
 
+.origin{
+  font-weight: bold;
+}
+
 .randomPost {
   position: absolute;
   left: 50%;
@@ -179,7 +183,7 @@ img{
   margin: 1rem 1%;
   padding: 0.2rem 1rem;
   font-size: 3rem;
-  max-width: 600px;
+  max-width: 1000px;
   width: 100%;
 }
 
