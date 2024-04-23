@@ -11,7 +11,7 @@ const signup = async (req, res) => {
     try{
         const user = await User.signup(username, password, passwordCheck)
         const token = createWebToken(user._id)
-        res.status(200).json({username, token})
+        res.status(200).json({username, _id: user._id, token})
     }catch (error) {
         res.status(400).json({ error: error.message })
     }

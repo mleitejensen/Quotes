@@ -6,15 +6,18 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import { Navigate } from 'react-router-dom'
 import { useDeletePost } from "../hooks/useDeletePost";
 import { useLike } from "../hooks/useLike";
+import Like from "../assets/like.svg"
+import Liked from "../assets/liked.svg"
+import Modal from "../components/Modal"
 
 const Home = () => {
     const { user } = useAuthContext()
     const { username } = useParams();
     const { like, likeIsLoading, likeError } = useLike()
 
-    if(user.username !== username){
+    if(user?.username !== username){
         return(
-            <Navigate to="/"/>
+            <Navigate to={`/${username}`}/>
         )
     }
 
@@ -22,10 +25,9 @@ const Home = () => {
     const [origin, setOrigin] = useState("")
     const [body, setBody] = useState("")
     const {post, error, isLoading, data} = usePost()
-
     const {getUserPosts, userPostError, userPostIsLoading, userPostData} = useUserPosts()
-
     const {deletePost, deleteError, deleteIsLoading, deleteData} = useDeletePost()
+    const [checkDelete, setCheckDelete] = useState(false)
 
 
     useEffect(() => {
@@ -79,6 +81,9 @@ const Home = () => {
 
     return(
         <>
+        {checkDelete &&
+            <Modal setCheckDelete={setCheckDelete} deletePost={deletePost} _id={checkDelete}></Modal>
+        }
 
         <form className="publish">
             <textarea 
@@ -105,18 +110,31 @@ const Home = () => {
             <div className="post" key={post?._id}>
                 <h3 className="quote">"{post?.body}"</h3>
                 <div className="box">
-                    <p>Likes: {post?.likes.length}</p>
-                    <p>{getTimeAgo(post.createdAt)}</p>
+                    {user && 
+                    <>
+                        {post?.likes.includes(user._id) && 
+                        <div className="likes">
+                            <img className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Liked}></img> 
+                            <p>{post?.likes.length}</p>
+                        </div>
+                        }
+                        {!post?.likes.includes(user._id) && 
+                        <div className="likes">
+                            <img className="like" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Like}></img>
+                            <p>{post?.likes.length}</p>
+                        </div>
+                        }
+                    </>
+                    }
+                    {!user &&
+                        <p>Likes: {post?.likes.length}</p>
+                    }
+                    <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
                     <p>{post?.origin}</p>
-
                 </div>
-                {post?.likes?.includes(user._id) && 
-                <button className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id)}}>Unlike</button>
-                }
-                {!post?.likes?.includes(user._id) && 
-                <button className="like" disabled={likeIsLoading} onClick={() => {like(post?._id)}}>Like</button>
-                }
-                <button className="delete" disabled={deleteIsLoading} onClick={() => deleteButton(post?._id)}>X</button>
+                
+                
+                <button className="delete" disabled={deleteIsLoading} onClick={() => setCheckDelete(post?._id)/*</div>deleteButton(post?._id)*/}>X</button>
             </div>
         ))}
 

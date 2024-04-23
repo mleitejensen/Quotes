@@ -1,4 +1,5 @@
 .pages {
+  position: relative;
   max-width: 1600px;
   padding: 10px;
   margin: 0 auto;
@@ -15,6 +16,7 @@ header {
 }
  
 nav {
+  z-index: 5;
   max-width: 100%; /* Adjusted */
   padding: 10px;
   display: flex;
@@ -94,8 +96,6 @@ header a {
 
 .post p{
   font-size: 2rem;
-  text-align: right;
-  margin-right: 15%;
 }
  
 .publish {
@@ -160,7 +160,11 @@ img{
 }
 
 .quote{
+  text-align: center;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  max-width: 80%;
 }
 
 .randomPost {
@@ -179,26 +183,70 @@ img{
 
 .randomPost p{
   font-size: 2rem;
-  text-align: right;
 }
 
 .like, .unlike{
+  width: 50px;
+  height: 50px;
+  display: flex;
   font-size: 1rem;
 }
 
-.like{
-  color: black;
+.like, .unlike{
+  max-width: 50px;
+  max-height: 50px;
+  border: none;
 }
 
-.unlike{
-  color: blue;
-  background-color: white;
+.unlike:hover, .like:hover{
+  cursor: pointer;
 }
 
-
-.box{
+.likes{
   display: flex;
 }
+.likes * {
+  margin: 10px 20px;
+}
+
+.box{
+  display: grid;
+  grid-template-columns: 20% 46% 33%;
+  gap: 50px; 
+}
+
+.blur{
+  position: absolute;
+  top: 0;
+  left: -500px;
+  width: 3000px;
+  height: 100%;
+  background-color: #00000077;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.deleteBox{
+  background-color: white;
+  position: fixed;
+  z-index: 3;
+  display: flexbox;
+  box-shadow: 3px 3px 15px black;
+  border-radius: 4px;
+  width: 30%;
+  height: 10%;
+  padding: 30px;
+  top: 30%;
+  left: 50%;
+  translate: -50%;
+  transform: translateY(-50%);
+}
+
+.question{
+  display: flex;
+  gap: 50px;
+}
+
  
 /* Media Queries */
 

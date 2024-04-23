@@ -14,7 +14,7 @@ import Navbar from './components/Navbar'
 function App() {
   const { user } = useAuthContext()
 
-  document.title = "Bitter"
+  document.title = "Quotes"
 
   return (
     <>
@@ -48,7 +48,7 @@ function App() {
               element={<Testing />} 
             />
             <Route 
-              path="/:user" 
+              path="/:username" 
               element={<User />} 
             />
           </Routes>

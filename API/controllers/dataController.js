@@ -99,6 +99,16 @@ const updateLike = async (req, res) => {
     }
 }
 
+const getPost = async (req, res) => {
+    const id = req.params.id
+    try{
+        const findPost = await DataModel.findOne({_id: id})
+        res.status(200).json(findPost)
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+}
+
 module.exports = {
     getLatest,
     createPost,
@@ -106,4 +116,5 @@ module.exports = {
     deletePost,
     randomPost,
     updateLike,
+    getPost,
 }
