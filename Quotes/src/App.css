@@ -208,7 +208,8 @@ img{
   display: flexbox;
 }
 .likes * {
-  margin: 10px 20px;
+  margin: auto;
+  text-align: center;
 }
 
 
