@@ -16,7 +16,7 @@ const Signup = () => {
     return(
         <>
         <form className="loginForm" onSubmit={handleSubmit}>
-            <h2>Be bitter like us!</h2>
+            <h2>Become a pretentious quoter!</h2>
             <input type="text" name="username" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)}/> 
             <br />
             <input type="password" name="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>

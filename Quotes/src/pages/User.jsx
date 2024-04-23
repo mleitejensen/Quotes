@@ -54,13 +54,13 @@ const User = () => {
                     <>
                         {post?.likes?.includes(user._id) && 
                         <div className="likes">
-                            <img className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Liked}></img> 
+                            <img alt="Like button" className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Liked}></img> 
                             <p>{post?.likes.length}</p>
                         </div>
                         }
                         {!post?.likes?.includes(user._id) && 
                         <div className="likes">
-                            <img className="like" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Like}></img>
+                            <img alt="Like button" className="like" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Like}></img>
                             <p>{post?.likes.length}</p>
                         </div>
                         }

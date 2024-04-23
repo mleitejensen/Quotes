@@ -111,10 +111,10 @@ const Home = () => {
 
                         <div className="likes">
                         {!post?.likes.includes(user._id) && 
-                            <img className="like" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Like}></img>
+                            <img alt="Like button" className="like" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Like}></img>
                         }
                         {post?.likes.includes(user._id) && 
-                            <img className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Liked}></img> 
+                            <img alt="Like button" className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Liked}></img> 
                         }
 
                             <p>{post?.likes.length}</p>

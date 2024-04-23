@@ -45,7 +45,7 @@ const Index = () => {
                 {post?.likes?.includes(user?._id) && 
                 <>
                     <div className="likes">
-                        <img className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Liked}></img> 
+                        <img alt="Like button" className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Liked}></img> 
                         {res &&
                             <p>{res?.likes.length}</p>
                         }
@@ -61,11 +61,11 @@ const Index = () => {
                 <>
                     <div className="likes">
                         {user && 
-                            <img className="like" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Like}></img>
+                            <img alt="Like button" className="like" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Like}></img>
                         }
                         {!user && 
-                            <Link to="/sign-up">
-                                <img className="like" src={Like}></img>
+                            <Link className="likeLink" to="/sign-up">
+                                <img alt="Like button" className="like" src={Like}></img>
                             </Link>
                         }
                         {res &&

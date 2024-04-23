@@ -15,7 +15,7 @@ const Login = () => {
     return(
         <>
         <form className="loginForm" onSubmit={handleSubmit}>
-        <h2>Sign in to create bitter posts</h2>
+        <h2>Sign in and quote with us!</h2>
             <input type="text" name="username" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)}/> 
             <br />
             <input type="password" name="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
