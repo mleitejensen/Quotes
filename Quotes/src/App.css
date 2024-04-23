@@ -1,0 +1,258 @@
+.pages {
+  max-width: 1600px;
+  padding: 10px;
+  margin: 0 auto;
+}
+ 
+textarea {
+  resize: none;
+}
+ 
+header {
+  background: var(--secondary);
+  color: var(--text);
+  box-shadow: 0px 3px 6px #121416;
+}
+ 
+nav {
+  max-width: 100%; /* Adjusted */
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav button{
+  font-size: 2em;
+}
+ 
+.navLoginSignup {
+  display: flex;
+}
+ 
+header a {
+  color: black;
+  text-decoration: none;
+}
+ 
+.loginForm {
+  display: flex;
+  flex-direction: column; /* Adjusted */
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 1px 1px 6px 1px;
+  width: 80%;
+  max-width: 300px; /* Adjusted */
+  margin: 6rem auto;
+  padding: 5% 10%;
+}
+ 
+.loginForm * {
+  margin: 0 auto;
+  text-align: center;
+}
+ 
+.loginForm input {
+  border: 0px;
+  border-bottom: 1px solid;
+  font-size: 1.5rem;
+  margin: 1vh 0px;
+  width: 100%;
+  text-align: left;
+}
+ 
+.loginForm button {
+  margin-top: 1rem; /* Adjusted */
+  align-self: center; /* Adjusted */
+}
+ 
+.error {
+  text-align: center;
+  background-color: rgb(179, 1, 1);
+  border-radius: 4px;
+  color: white;
+  min-height: 20px;
+  max-width: 80%;
+  margin: 1rem auto;
+  padding: 0.3rem 0.1rem;
+}
+ 
+.post {
+  position: relative;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin: 1rem 10%;
+  padding: 0.2rem 1rem;
+  font-size: 3rem;
+  max-width: 100%; /* Adjusted */
+}
+
+.post h3{
+  margin:  10px 0;
+}
+
+.post p{
+  font-size: 2rem;
+  text-align: right;
+  margin-right: 15%;
+}
+ 
+.publish {
+  position: relative;
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 1rem 10%;
+  padding: 0.2rem 1rem;
+  font-size: 3rem;
+  max-width: 100%;
+  display: flexbox;
+  flex-wrap: wrap; /* Added */
+}
+ 
+.publish input {
+  float: right;
+  border: none;
+  border-bottom: 1px;
+}
+ 
+.publish * {
+  max-width: 90%;
+  margin: 1rem 1rem;
+  font-size: 2rem;
+}
+
+.publish button{
+  position: relative;
+  left: 50%;
+  translate: -50%;
+}
+
+.errorBox{
+  min-height: 50px;
+  max-height: 50px;
+  box-sizing: border-box;
+}
+
+.delete{
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  font-size: 0.5em;
+  color: white;
+  background-color: rgb(179, 1, 1);
+}
+
+img{
+  margin: 10px 10%;
+  max-width: 80%;
+  object-fit: contain;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.info{
+  margin: 0 auto;
+  text-align: center;
+  max-width: 70%;
+}
+
+.quote{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.randomPost {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  word-wrap: break-word;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin: 1rem 1%;
+  padding: 0.2rem 1rem;
+  font-size: 3rem;
+  max-width: 600px;
+}
+
+.randomPost p{
+  font-size: 2rem;
+  text-align: right;
+}
+
+.like, .unlike{
+  font-size: 1rem;
+}
+
+.like{
+  color: black;
+}
+
+.unlike{
+  color: blue;
+  background-color: white;
+}
+
+
+.box{
+  display: flex;
+}
+ 
+/* Media Queries */
+
+@media screen and (max-width: 700px) {
+
+  .post{
+    font-size: 2em;
+  }
+
+  .post p {
+    font-size: 0.5em;
+  }
+
+  .publish input {
+    border: none;
+    border-bottom: 1px;
+  }
+   
+  .publish textarea {
+    font-size: 0.5em;
+  }
+  .publish input{
+    font-size: 0.5em;
+  }
+  .publish button{
+    font-size: 0.5em;
+  }
+
+  nav button{
+    font-size: 1.5em;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+
+  .post{
+    font-size: 1.5em;
+  }
+  .post p {
+    font-size: 0.5em;
+  }
+
+  .publish textarea {
+    font-size: 0.4em;
+  }
+  .publish input{
+    font-size: 0.4em;
+  }
+  .publish button{
+    font-size: 0.3em;
+  }
+
+  nav button{
+    font-size: 1em;
+  }
+}
