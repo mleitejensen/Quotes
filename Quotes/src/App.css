@@ -259,8 +259,41 @@ img{
 }
 
 .buttons{
+  display: flex;
   position: relative;
   translate: -25%;
+}
+
+.post .quote:hover{
+  cursor: pointer;
+  
+}
+
+.tooltip {
+  position: relative;
+  text-decoration: dashed underline 2px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  font-size: 1.5rem;
+  width: 200px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
  

@@ -135,7 +135,7 @@ const Home = () => {
 
         {userPostData && userPostData.map((post) => (
             <div className="post" key={post?._id}>
-                <h3 className="quote" onClick={() => setEditing(post)}>"{post?.body}"</h3>
+                <h3 className="quote tooltip" onClick={() => setEditing(post)}>"{post?.body}"<p className="tooltiptext">Click on this quote to edit it!</p></h3>
                 <div className="box">
                     {user && 
                     <>
