@@ -23,10 +23,11 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
 nav button{
-  font-size: 2em;
+  font-size: 1.2em;
 }
  
 .navLoginSignup {
@@ -36,6 +37,26 @@ nav button{
 header a {
   color: black;
   text-decoration: none;
+}
+
+.infoAndLogout{
+  position: relative;
+  display: flex;
+  gap: 20px;
+  width: 6em;
+}
+.infoAndLogout a{
+  position: absolute;
+  right: 120%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.infoAndLogout button{
+  position: absolute;
+  top: 50%;
+  height: 40px;
+  right: 10px;
+  transform: translateY(-50%);
 }
  
 .loginForm {
@@ -329,10 +350,6 @@ img{
   .publish button{
     font-size: 0.5em;
   }
-
-  nav button{
-    font-size: 1.5em;
-  }
   .randomPost p{
     font-size: 1rem;
   }
@@ -341,6 +358,13 @@ img{
   }
 
 }
+@media screen and (max-width: 700px) {
+  .infoAndLogout a{
+    right: 110%;
+  }
+
+}
+
 
 @media screen and (max-width: 500px) {
 
@@ -364,8 +388,12 @@ img{
   nav button{
     font-size: 1em;
   }
+  .infoAndLogout a{
+    right: 100%;
+  }
 
   .quote{
     font-size: 1.8rem;
   }
+
 }
