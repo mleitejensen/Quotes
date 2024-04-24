@@ -52,6 +52,7 @@ const Home = () => {
     },[deleteData])
 
     useEffect(() => {
+        setEditing(null)
         getUserPosts(user.username)
     },[editedPost])
 
@@ -101,8 +102,11 @@ const Home = () => {
                     onChange={(e) => {setEditing(prev => ({...prev, body: e.target.value}))}}
                 ></textarea> <br />
                 <input type="text" placeholder="Origin of the quote" value={editing?.origin} onChange={(e) => {setEditing(prev => ({...prev, origin: e.target.value}))}}/><br />
-                {error && <div className="error">{error}</div>} 
-                <button disabled={isLoading} onClick={(e) => {e.preventDefault(); edit(editing?._id, editing?.body, editing?.origin)}}>Edit</button>
+                {error && <div className="error">{error}</div>}
+                <div className="buttons">
+                    <button disabled={isLoading} onClick={(e) => {e.preventDefault(); edit(editing?._id, editing?.body, editing?.origin)}}>Save edit</button>
+                    <button onClick={(e) => {e.preventDefault(); setEditing(null)}}>Cancel edit</button>
+                </div>
             </form>
         }
 

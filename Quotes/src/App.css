@@ -2,7 +2,7 @@
   position: relative;
   padding: 10px;
   margin: 0 auto;
-  min-height: 1080px;
+  min-height: 500px;
   overflow: hidden;
 }
  
@@ -110,6 +110,7 @@ header a {
   padding: 0.2rem 1rem;
   font-size: 3rem;
   max-width: 100%;
+  max-height: 600px;
   display: flexbox;
   flex-wrap: wrap; /* Added */
 }
@@ -257,8 +258,19 @@ img{
   gap: 50px;
 }
 
+.buttons{
+  position: relative;
+  translate: -25%;
+}
+
  
 /* Media Queries */
+
+@media screen and (max-width: 900px) {
+  .publish button{
+    font-size: 0.7em;
+  }
+}
 
 @media screen and (max-width: 800px) {
 
@@ -318,5 +330,9 @@ img{
 
   nav button{
     font-size: 1em;
+  }
+
+  .quote{
+    font-size: 1.8rem;
   }
 }
