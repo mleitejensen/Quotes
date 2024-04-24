@@ -67,7 +67,7 @@ const Index = () => {
                                 <p>{post?.likes.length}</p>
                             </div>
                             <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
-                            <p className="origin">{post?.origin}</p>
+                            <p className="origin">- {post?.origin}</p>
                         </>
                         }
                         {!post?.likes?.includes(user?._id) && 
@@ -77,7 +77,7 @@ const Index = () => {
                                 <p>{post?.likes.length}</p>
                             </div>
                             <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
-                            <p className="origin">{post?.origin}</p>
+                            <p className="origin">- {post?.origin}</p>
                         </>
                         }
                     </>
@@ -91,7 +91,7 @@ const Index = () => {
                                 <p>{res?.likes.length}</p>
                             </div>
                             <p>Posted by: {res?.username} {getTimeAgo(post?.createdAt)}</p>
-                            <p className="origin">{res?.origin}</p>
+                            <p className="origin">- {res?.origin}</p>
                         </>
                         }
                         {!res?.likes?.includes(user?._id) && 
@@ -101,7 +101,7 @@ const Index = () => {
                                 <p>{res?.likes.length}</p>
                             </div>
                             <p>Posted by: {res?.username} {getTimeAgo(res?.createdAt)}</p>
-                            <p className="origin">{res?.origin}</p>
+                            <p className="origin">- {res?.origin}</p>
                         </>
                         }
                     </>

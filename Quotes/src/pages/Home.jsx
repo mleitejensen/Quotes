@@ -135,7 +135,7 @@ const Home = () => {
 
         {userPostData && userPostData.map((post) => (
             <div className="post" key={post?._id}>
-                <h3 className="quote tooltip" onClick={() => setEditing(post)}>"{post?.body}"<p className="tooltiptext">Click on this quote to edit it!</p></h3>
+                <h3 className="quote tooltip edit" onClick={() => setEditing(post)}>"{post?.body}"<p className="tooltiptext">Click on this quote to edit it!</p></h3>
                 <div className="box">
                     {user && 
                     <>
@@ -156,7 +156,7 @@ const Home = () => {
                         <p>Likes: {post?.likes.length}</p>
                     }
                     <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
-                    <p>{post?.origin}</p>
+                    <p>- {post?.origin}</p>
                 </div>
                 
                 
