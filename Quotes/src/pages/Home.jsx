@@ -135,7 +135,7 @@ const Home = () => {
 
         {userPostData && userPostData.map((post) => (
             <div className="post" key={post?._id}>
-                <h3 className="quote tooltip edit" onClick={() => setEditing(post)}>"{post?.body}"<p className="tooltiptext">Click on this quote to edit it!</p></h3>
+                <h3 className="quote tooltip edit" onClick={() => {setEditing(post); window.scrollTo({top: 0, left: 0, behavior: "smooth"})}}>"{post?.body}"<p className="tooltiptext">Click on this quote to edit it!</p></h3>
                 <div className="box">
                     {user && 
                     <>
