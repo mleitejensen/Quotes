@@ -109,6 +109,23 @@ const getPost = async (req, res) => {
     }
 }
 
+const editPost = async (req, res) => {
+    const {postID, newBody, newOrigin } = req.body
+    try{
+        findUser = await User.findOne({_id: req.user._id})
+        findPost = await DataModel.findOne({_id: postID})
+        if(!findUser.username === findPost.username){
+            throw Error("You are not authorized to edit this post")
+        }
+
+        const updatePost = await DataModel.findOneAndUpdate({_id: postID}, {body: newBody, origin: newOrigin}, {new: true})
+
+        res.status(200).json(updatePost)
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+} 
+
 module.exports = {
     getLatest,
     createPost,
@@ -117,4 +134,5 @@ module.exports = {
     randomPost,
     updateLike,
     getPost,
+    editPost,
 }
