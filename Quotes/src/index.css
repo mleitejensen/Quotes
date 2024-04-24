@@ -58,8 +58,10 @@ button {
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
+  transition: color 0.25s;
 }
 button:hover {
+  color: #646cff;
   border-color: #646cff;
 }
 button:focus,

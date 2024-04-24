@@ -168,6 +168,10 @@ header a {
   color: white;
   background-color: rgb(179, 1, 1);
 }
+.delete:hover{
+  color: black;
+  border-color: black;
+}
 
 img{
   margin: 10px 10%;
