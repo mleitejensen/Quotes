@@ -56,54 +56,60 @@ const Index = () => {
                 </>
                 }
 
-                {!res &&
+                {user &&
                 <>
-                    {post?.likes?.includes(user?._id) && 
+                    {!res &&
                     <>
-                        <div className="likes">
-                            <img alt="Like button" className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Liked}></img> 
-                            <p>{post?.likes.length}</p>
-                        </div>
-                        <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
-                        <p className="origin">{post?.origin}</p>
+                        {post?.likes?.includes(user?._id) && 
+                        <>
+                            <div className="likes">
+                                <img alt="Like button" className="unlike" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Liked}></img> 
+                                <p>{post?.likes.length}</p>
+                            </div>
+                            <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
+                            <p className="origin">{post?.origin}</p>
+                        </>
+                        }
+                        {!post?.likes?.includes(user?._id) && 
+                        <>
+                            <div className="likes">
+                                <img alt="Like button" className="like" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Like}></img>
+                                <p>{post?.likes.length}</p>
+                            </div>
+                            <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
+                            <p className="origin">{post?.origin}</p>
+                        </>
+                        }
                     </>
                     }
-                    {!post?.likes?.includes(user?._id) && 
+                    {res &&
                     <>
-                        <div className="likes">
-                            <img alt="Like button" className="like" disabled={likeIsLoading} onClick={() => {like(post?._id)}} src={Like}></img>
-                            <p>{post?.likes.length}</p>
-                        </div>
-                        <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
-                        <p className="origin">{post?.origin}</p>
+                        {res?.likes?.includes(user?._id) && 
+                        <>
+                            <div className="likes">
+                                <img alt="Like button" className="unlike" disabled={likeIsLoading} onClick={() => {like(res?._id)}} src={Liked}></img> 
+                                <p>{res?.likes.length}</p>
+                            </div>
+                            <p>Posted by: {res?.username} {getTimeAgo(post?.createdAt)}</p>
+                            <p className="origin">{res?.origin}</p>
+                        </>
+                        }
+                        {!res?.likes?.includes(user?._id) && 
+                        <>
+                            <div className="likes">
+                                <img alt="Like button" className="like" disabled={likeIsLoading} onClick={() => {like(res?._id)}} src={Like}></img>
+                                <p>{res?.likes.length}</p>
+                            </div>
+                            <p>Posted by: {res?.username} {getTimeAgo(res?.createdAt)}</p>
+                            <p className="origin">{res?.origin}</p>
+                        </>
+                        }
                     </>
                     }
+                
                 </>
                 }
-                {res &&
-                <>
-                    {res?.likes?.includes(user?._id) && 
-                    <>
-                        <div className="likes">
-                            <img alt="Like button" className="unlike" disabled={likeIsLoading} onClick={() => {like(res?._id)}} src={Liked}></img> 
-                            <p>{res?.likes.length}</p>
-                        </div>
-                        <p>Posted by: {res?.username} {getTimeAgo(post?.createdAt)}</p>
-                        <p className="origin">{res?.origin}</p>
-                    </>
-                    }
-                    {!res?.likes?.includes(user?._id) && 
-                    <>
-                        <div className="likes">
-                            <img alt="Like button" className="like" disabled={likeIsLoading} onClick={() => {like(res?._id)}} src={Like}></img>
-                            <p>{res?.likes.length}</p>
-                        </div>
-                        <p>Posted by: {res?.username} {getTimeAgo(res?.createdAt)}</p>
-                        <p className="origin">{res?.origin}</p>
-                    </>
-                    }
-                </>
-                }
+
                 
                 </>
             </div>
