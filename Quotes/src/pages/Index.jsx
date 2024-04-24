@@ -62,7 +62,7 @@ const Index = () => {
                             <p>{post?.likes.length}</p>
                         }
                     </div>
-                    <p>Posted by: {post?.username} <div className="">{getTimeAgo(post?.createdAt)}</div></p>
+                    <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
                     <p className="origin">{post?.origin}</p>
                 </>
                 }

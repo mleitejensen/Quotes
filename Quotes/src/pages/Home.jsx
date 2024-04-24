@@ -86,7 +86,7 @@ const Home = () => {
                 cols={45} 
                 rows={4} 
                 maxLength="100" 
-                placeholder="Input field for quote here..." 
+                placeholder="Input field for new quote here..." 
                 reset="true" 
                 value={body}
                 onChange={(e) => setBody(e.target.value)}

@@ -89,6 +89,7 @@ header a {
   padding: 0.2rem 1rem;
   font-size: 3rem;
   max-width: 100%; /* Adjusted */
+  border-left: 3px solid;
 }
 
 .post h3{
@@ -175,7 +176,7 @@ img{
 .randomPost {
   position: absolute;
   left: 50%;
-  top: 30%;
+  top: 10%;
   transform: translateX(-50%);
   word-wrap: break-word;
   box-sizing: border-box;
@@ -259,7 +260,7 @@ img{
  
 /* Media Queries */
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
 
   .post{
     font-size: 2em;
@@ -286,6 +287,12 @@ img{
 
   nav button{
     font-size: 1.5em;
+  }
+  .randomPost p{
+    font-size: 1rem;
+  }
+  .quote{
+    font-size: 3rem;
   }
 
 }
