@@ -9,11 +9,13 @@ import { useLike } from "../hooks/useLike";
 import Like from "../assets/like.svg"
 import Liked from "../assets/liked.svg"
 import Modal from "../components/Modal"
+import { useEditPost } from "../hooks/useEditPost";
 
 const Home = () => {
     const { user } = useAuthContext()
     const { username } = useParams();
     const { like, likeIsLoading, likeError } = useLike()
+    const { edit, editedPost, editIsLoading, editError } = useEditPost()
 
     if(user?.username !== username){
         return(
@@ -28,6 +30,7 @@ const Home = () => {
     const {getUserPosts, userPostError, userPostIsLoading, userPostData} = useUserPosts()
     const {deletePost, deleteError, deleteIsLoading, deleteData} = useDeletePost()
     const [checkDelete, setCheckDelete] = useState(false)
+    const [editing, setEditing] = useState(null)
 
 
     useEffect(() => {
@@ -47,6 +50,10 @@ const Home = () => {
     useEffect(() => {
         getUserPosts(user.username)
     },[deleteData])
+
+    useEffect(() => {
+        getUserPosts(user.username)
+    },[editedPost])
 
     const publish = async (e) => {
         e.preventDefault()
@@ -75,27 +82,47 @@ const Home = () => {
         }
     }
 
+
+
     return(
         <>
-        {checkDelete &&
+        {checkDelete && // modal for making sure you want to delete you post
             <Modal setCheckDelete={setCheckDelete} deletePost={deletePost} _id={checkDelete}></Modal>
         }
 
-        <form className="publish">
-            <textarea 
-                cols={45} 
-                rows={4} 
-                maxLength="100" 
-                placeholder="Input field for new quote here..." 
-                reset="true" 
-                value={body}
-                onChange={(e) => setBody(e.target.value)}
-            ></textarea> <br />
-            <input type="text" placeholder="Origin of the quote" value={origin} onChange={(e) => setOrigin(e.target.value)}/><br />
-            {error && <div className="error">{error}</div>} 
-            <button disabled={isLoading} onClick={publish}>Publish</button>
+        {editing && 
+            <form className="publish">
+                <textarea 
+                    cols={45} 
+                    rows={4} 
+                    maxLength="100" 
+                    reset="true" 
+                    value={editing?.body}
+                    onChange={(e) => {setEditing(prev => ({...prev, body: e.target.value}))}}
+                ></textarea> <br />
+                <input type="text" placeholder="Origin of the quote" value={editing?.origin} onChange={(e) => {setEditing(prev => ({...prev, origin: e.target.value}))}}/><br />
+                {error && <div className="error">{error}</div>} 
+                <button disabled={isLoading} onClick={(e) => {e.preventDefault(); edit(editing?._id, editing?.body, editing?.origin)}}>Edit</button>
+            </form>
+        }
 
-        </form>
+        {!editing &&
+            <form className="publish">
+                <textarea 
+                    cols={45} 
+                    rows={4} 
+                    maxLength="100" 
+                    placeholder="Input field for new quote here..." 
+                    reset="true" 
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
+                ></textarea> <br />
+                <input type="text" placeholder="Origin of the quote" value={origin} onChange={(e) => setOrigin(e.target.value)}/><br />
+                {error && <div className="error">{error}</div>} 
+                <button disabled={isLoading} onClick={publish}>Publish</button>
+            </form>
+        }
+
 
         {deleteError && 
             <div className="error">{deleteError}</div>
@@ -104,7 +131,7 @@ const Home = () => {
 
         {userPostData && userPostData.map((post) => (
             <div className="post" key={post?._id}>
-                <h3 className="quote">"{post?.body}"</h3>
+                <h3 className="quote" onClick={() => setEditing(post)}>"{post?.body}"</h3>
                 <div className="box">
                     {user && 
                     <>
