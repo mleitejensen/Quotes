@@ -13,11 +13,11 @@ const Info = () => {
 
             <p>On the image over you can see your home page. <br/> This is where you can make new post.</p>
 
-            <p>To make a new post, just write a title and write anything in text box. After you have writen what you want, you just have to hit the "publish" button and then your are done. Look at the image below for more help.</p>
+            <p>To make a new post, just write a quote and write who said it in the "origin" input field. After you have writen what you want, you just have to hit the "publish" button and then your are done. Look at the image below for more help.</p>
             <img src={homePostPNG} alt="Image of how to make a new post" />
 
             <h2>How do i delete old posts?</h2>
-            <p>Delete a post must also be done at your home page. <br/>If you have any post, they should appear under the publish box. Each of your posts should have a button that says "Delete". Simply click the delete button on the post you want to delete. Look at the image below for more help.</p>
+            <p>Delete a post must also be done at your home page. <br/>If you have any post, they should appear under the publish box. Each of your posts should have a button that says "X". Simply click that button on the post you want to delete. Look at the image below for more help.</p>
             <img src={homeDeletePNG} alt="Image of how to delete an old post" />
             
         </div>
