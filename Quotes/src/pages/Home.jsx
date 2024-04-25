@@ -156,7 +156,7 @@ const Home = () => {
                         <p>Likes: {post?.likes.length}</p>
                     }
                     <p>Posted by: {post?.username} {getTimeAgo(post?.createdAt)}</p>
-                    <p>- {post?.origin}</p>
+                    <p className="origin">- {post?.origin}</p>
                 </div>
                 
                 
