@@ -11,10 +11,12 @@ const getLatest = async (req, res) => {
         for(let i = 0; i < latestPosts; i++){
             latestList.push(dataList[i])
         }
+        let result=createFeedback(200, 'List of the 5 latest posts', true, latestList);
         
-        res.status(202).json(latestList)
+        res.status(result.statuscode).json(result)
     } catch(error){
-        res.status(400).json({ error: error.message })
+        let result= createFeedback(400, error.message);
+        res.status(result.statuscode).json(result)
     }
 }
 
@@ -125,6 +127,15 @@ const editPost = async (req, res) => {
         res.status(400).json({ error: error.message })
     }
 } 
+
+const createFeedback = (statuscode, feedback, isSuccess=false, payload=null) => {
+    return {
+        statuscode,
+        feedback,
+        isSuccess,
+        payload
+    }
+}
 
 module.exports = {
     getLatest,

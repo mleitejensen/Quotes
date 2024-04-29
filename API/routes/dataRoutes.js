@@ -8,10 +8,11 @@ router.get("/latest", getLatest)
 router.get("/user/:user", getUserPosts)
 router.get("/post/:id", getPost)
 
-router.use(requireAuth)
-router.post("/post", createPost)
-router.delete("/delete", deletePost)
-router.patch("/like", updateLike)
-router.patch("/edit", editPost)
+router.post("/post", requireAuth, createPost)
+router.delete("/delete", requireAuth, deletePost)
+router.patch("/like", requireAuth, updateLike)
+router.patch("/edit", requireAuth, editPost)
+
+router.use("*", (req, res) => res.status(404).json({message: "Route does not exist"}))
 
 module.exports = router

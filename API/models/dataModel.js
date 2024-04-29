@@ -1,5 +1,17 @@
 const mongoose = require('mongoose');
 
+const commentSchema = new mongoose.Schema({
+    comment: {
+        type: String,
+        required: true,
+    },
+    username:{
+        type: String,
+        required: true,
+    }
+}, {timestamps: true})
+
+
 const dataSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -13,7 +25,8 @@ const dataSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    likes: []
+    likes: [],
+    comments: [commentSchema]
 }, {timestamps: true});
 
 
