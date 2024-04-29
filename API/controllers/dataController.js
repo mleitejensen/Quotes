@@ -128,6 +128,17 @@ const editPost = async (req, res) => {
     }
 } 
 
+const addComment = async (req, res) => {
+    const {comment, postID} = req.body
+    try{
+        findUser = await User.findOne({_id: req.user})
+        postedComment = await DataModel.findOneAndUpdate({_id: postID}, { $push: {comments: {comment, username: findUser.username}}}, {new: true})
+        res.status(200).json(postedComment)
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+}
+
 const createFeedback = (statuscode, feedback, isSuccess=false, payload=null) => {
     return {
         statuscode,
@@ -146,4 +157,5 @@ module.exports = {
     updateLike,
     getPost,
     editPost,
+    addComment,
 }
