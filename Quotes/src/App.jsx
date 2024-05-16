@@ -55,7 +55,7 @@ function App() {
             />
             <Route 
               path="/" 
-              element={userProfile ? <Home userProfile={userProfile} /> : <Navigate to="/sign-in" />} 
+              element={userProfile? <Index userProfile={userProfile} /> : <Navigate to="sign-in"/>} 
             />
             <Route 
               path="/info" 

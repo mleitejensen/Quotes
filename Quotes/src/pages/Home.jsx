@@ -34,26 +34,26 @@ const Home = () => {
 
 
     useEffect(() => {
-        getUserPosts(user.username)
+        getUserPosts(user?.username)
     },[likeIsLoading])
 
     useEffect(() => {
-        getUserPosts(user.username)
+        getUserPosts(user?.username)
     }, [username])
 
     useEffect(() => {
-        getUserPosts(user.username)
+        getUserPosts(user?.username)
         setBody("")
         setOrigin("")
     },[data])
 
     useEffect(() => {
-        getUserPosts(user.username)
+        getUserPosts(user?.username)
     },[deleteData])
 
     useEffect(() => {
         setEditing(null)
-        getUserPosts(user.username)
+        getUserPosts(user?.username)
     },[editedPost])
 
     const publish = async (e) => {
