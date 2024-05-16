@@ -13,6 +13,14 @@ const Index = (userDetails) => {
 
     const userProfile = userDetails.user;
 
+    setTimeout(() => {
+        console.log(userDetails)
+        console.log(userProfile)
+    }, 5000)
+
+    const logout = () => {
+		window.open(`${process.env.REACT_APP_API_URL}/auth/logout`, "_self");
+	};
 
     useEffect(() => {
         console.log(userProfile)
@@ -42,6 +50,9 @@ const Index = (userDetails) => {
 
     return(
         <div className="index">
+            <button onClick={logout}>
+                Log Out
+            </button>
         <div className="randomPost">
             <h3 className="quote">"{post?.body}"</h3>
             <div className="box">

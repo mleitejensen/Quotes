@@ -18,12 +18,13 @@ function App() {
   
   document.title = "Quotes"
 
-  const [userProfile, setUser] = useState(null);
+  const [userDetails, setUser] = useState(null);
 
 	const getUser = async () => {
 		try {
-			const url = `${process.env.REACT_APP_API_URL}/auth/login/success`;
+			const url = `${process.env.PROXY}/auth/login/success`;
 			const { data } = await axios.get(url, { withCredentials: true });
+      console.log(data)
 			setUser(data.user._json);
 		} catch (err) {
 			console.log(err);
@@ -55,7 +56,7 @@ function App() {
             />
             <Route 
               path="/" 
-              element={userProfile? <Index userProfile={userProfile} /> : <Navigate to="sign-in"/>} 
+              element={<Index userDetails={userDetails} />} 
             />
             <Route 
               path="/info" 
