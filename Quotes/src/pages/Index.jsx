@@ -6,12 +6,15 @@ import Liked from "../assets/liked.svg"
 import { useLike } from "../hooks/useLike"
 import { useAuthContext } from "../hooks/useAuthContext"
 
-const Index = () => {
+const Index = (userProfile) => {
     const { getRandomPost, post, isLoading, error } = useRandomPost()
     const { like, res, likeIsLoading, likeError } = useLike()
     const { user } = useAuthContext()
 
+
+
     useEffect(() => {
+        console.log(userProfile)
         getRandomPost()
     }, [])
    

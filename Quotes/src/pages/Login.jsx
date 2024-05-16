@@ -12,8 +12,18 @@ const Login = () => {
         await login(username, password)
     }
 
+    const googleAuth = () => {
+		window.open(
+			`${process.env.REACT_APP_API_URL}/auth/google/callback`,
+			"_self"
+		);
+	};
+
     return(
         <>
+        <button onClick={googleAuth}>
+            <span>Sing in with Google</span>
+        </button>
         <form className="loginForm" onSubmit={handleSubmit}>
         <h2>Sign in and quote with us!</h2>
             <input type="text" name="username" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)}/> 

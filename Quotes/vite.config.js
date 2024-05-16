@@ -6,7 +6,8 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   return {
     define: {
-      'process.env.PROXY': JSON.stringify(env.PROXY)
+      'process.env.PROXY': JSON.stringify(env.PROXY),
+      "process.env.REACT_APP_API_URL": JSON.stringify(env.REACT_APP_API_URL)
     },
     plugins: [react()],
   }
